@@ -1,0 +1,26 @@
+{
+  "name": "pantry-management",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^4.3.0",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "axios": "^0.21.4",
+    "cors": "^2.8.5",
+    "firebase": "^8.10.1",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "eslint": "7.28.0",
+    "eslint-config-next": "11.0.1"
+  }
+}

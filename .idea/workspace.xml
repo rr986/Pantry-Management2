@@ -5,26 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45cc2801-409e-49dd-afce-c96f225e4cc8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/AddItemForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ImageUploader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ItemList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/MainComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/searchBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase/functions/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase/functions/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pantry-management.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google-cloud-sdk-390.0.0-darwin-x86_64.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/google-cloud-sdk-390.0.0-darwin-x86_64.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@next/swc-darwin-x64/next-swc.darwin-x64.node" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@next/swc-darwin-x64/next-swc.darwin-x64.node" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

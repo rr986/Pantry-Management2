@@ -3,6 +3,7 @@ import ImageUploader from '../components/ImageUploader';
 import ItemList from '../components/ItemList';
 import AddItemForm from '../components/AddItemForm';
 import SearchBar from '../components/SearchBar';
+import RecipeSuggestion from '../components/RecipeSuggestion';
 import { Container, Typography, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from '@material-ui/core';
 
 const Home = () => {

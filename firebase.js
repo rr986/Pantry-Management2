@@ -17,6 +17,7 @@ if (!firebase.apps.length) {
 }
 
 const auth = firebase.auth();
+const storage = firebase.storage();
 
 auth.signInAnonymously()
   .then(() => {
@@ -26,4 +27,5 @@ auth.signInAnonymously()
     console.error('Anonymous sign-in failed', error);
   });
 
+export { auth, storage };
 export default firebase;

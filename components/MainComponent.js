@@ -1,4 +1,3 @@
-// MainComponent.js
 import React, { useState } from 'react';
 import AddItemForm from './AddItemForm';
 import ItemList from './ItemList';

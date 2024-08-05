@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { auth, storage } from '../Firebase'; // Update the path if necessary
-import firebase from '../firebase'; // Ensure correct import path
+import firebase from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { TextField, Button, CircularProgress, Typography } from '@material-ui/core';
 

@@ -1,6 +1,7 @@
-import firebase from 'firebase/app';
-import 'firebase/storage';
-import 'firebase/auth';
+// Import the modular Firebase SDK
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInAnonymously } from 'firebase/auth';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyARYBUhaMozOaLyANk_hgmT7sEfxho7ROc",
@@ -12,14 +13,15 @@ const firebaseConfig = {
   measurementId: "G-2RN913RMDG"
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
-const storage = firebase.storage();
+// Get Firebase services
+const auth = getAuth(app);
+const storage = getStorage(app);
 
-auth.signInAnonymously()
+// Sign in anonymously
+signInAnonymously(auth)
   .then(() => {
     console.log('Signed in anonymously');
   })
@@ -28,4 +30,3 @@ auth.signInAnonymously()
   });
 
 export { auth, storage };
-export default firebase;

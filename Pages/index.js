@@ -3,12 +3,11 @@ import ImageUploader from '../components/ImageUploader';
 import ItemList from '../components/ItemList';
 import AddItemForm from '../components/AddItemForm';
 import SearchBar from '../components/SearchBar';
-import { Container, Typography, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from '@material-ui/core';
+import RecipeSuggestion from '../components/RecipeSuggestion';
+import { Container, Typography } from '@material-ui/core';
 
 const Home = () => {
   const [items, setItems] = useState([]);
-  const [currentItem, setCurrentItem] = useState(null);
-  const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const addItem = (item) => {
@@ -16,23 +15,17 @@ const Home = () => {
   };
 
   const deleteItem = (index) => {
-    setItems((prevItems) => prevItems.filter((_, i) => i !== index));
+    const newItems = items.filter((_, i) => i !== index);
+    setItems(newItems);
   };
 
   const editItem = (index) => {
-    setCurrentItem({ ...items[index], index });
-    setOpen(true);
-  };
-
-  const handleEditChange = (e) => {
-    setCurrentItem({ ...currentItem, [e.target.name]: e.target.value });
-  };
-
-  const handleEditSubmit = () => {
-    setItems((prevItems) =>
-      prevItems.map((item, i) => (i === currentItem.index ? { name: currentItem.name, quantity: currentItem.quantity } : item))
+    const name = prompt("Enter new name", items[index].name);
+    const quantity = prompt("Enter new quantity", items[index].quantity);
+    const newItems = items.map((item, i) =>
+      i === index ? { name, quantity } : item
     );
-    setOpen(false);
+    setItems(newItems);
   };
 
   const filteredItems = items.filter(item =>
@@ -41,38 +34,14 @@ const Home = () => {
 
   return (
     <Container>
-      <Typography variant="h4">Pantry Management</Typography>
+      <Typography variant="h4" gutterBottom>
+        Pantry Management
+      </Typography>
       <SearchBar value={searchQuery} onChange={setSearchQuery} />
       <AddItemForm onAdd={addItem} />
       <ItemList items={filteredItems} onDelete={deleteItem} onEdit={editItem} />
       <ImageUploader addItem={addItem} />
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Edit Item</DialogTitle>
-        <DialogContent>
-          <TextField
-            label="Name"
-            name="name"
-            value={currentItem?.name || ''}
-            onChange={handleEditChange}
-            fullWidth
-          />
-          <TextField
-            label="Quantity"
-            name="quantity"
-            value={currentItem?.quantity || ''}
-            onChange={handleEditChange}
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpen(false)} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleEditSubmit} color="primary">
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <RecipeSuggestion items={items} />
     </Container>
   );
 };

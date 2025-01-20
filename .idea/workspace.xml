@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45cc2801-409e-49dd-afce-c96f225e4cc8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/RecipeSuggestion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/_app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AddItemForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddItemForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ImageUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ImageUploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/MainComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/RecipeSuggestion.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/RecipeSuggestion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>

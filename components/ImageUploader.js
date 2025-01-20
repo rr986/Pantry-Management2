@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { auth, storage } from '../firebase';
-import firebase from '../firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { TextField, Button, CircularProgress, Typography } from '@material-ui/core';
+import axios from 'axios';
+import { storage } from '../firebase'; // Import the storage instance
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ImageUploader = ({ addItem }) => {
   const [image, setImage] = useState(null);
@@ -16,34 +15,42 @@ const ImageUploader = ({ addItem }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!image) return;
+    if (!image) {
+      console.error('No image selected.');
+      return;
+    }
 
     setLoading(true);
-    const storageRef = firebase.storage().ref();
-    const imageRef = storageRef.child(`images/${image.name}`);
-    await imageRef.put(image);
-    const imageUrl = await imageRef.getDownloadURL();
 
     try {
-      const response = await axios.post('https://us-central1-pantry-management-cb281.cloudfunctions.net/classifyImage', { imageUrl });
+      const storageRef = ref(storage, `images/${image.name}`);
+      await uploadBytes(storageRef, image);
+      const imageUrl = await getDownloadURL(storageRef);
+
+      const response = await axios.post(
+        'https://us-central1-pantry-management-cb281.cloudfunctions.net/classifyImage',
+        { imageUrl }
+      );
       const classifiedLabels = response.data;
 
-      // Filter out general descriptors
       const filteredLabels = classifiedLabels.filter(label =>
         !["Food", "Fruit", "Staple food", "Natural foods", "Superfood", "Seedless fruit", "Rose family"].includes(label.description)
       );
 
-      // Find the label with the highest score
-      const highestScoreLabel = filteredLabels.reduce((prev, current) => (prev.score > current.score) ? prev : current, {});
+      const highestScoreLabel = filteredLabels.reduce(
+        (prev, current) => (prev.score > current.score ? prev : current),
+        {}
+      );
 
       setLabels(classifiedLabels);
+
       if (highestScoreLabel.description) {
-        addItem({ name: highestScoreLabel.description, quantity: 1 }); // Assuming quantity is 1 for classified items
+        addItem({ name: highestScoreLabel.description, quantity: 1 });
       } else {
-        console.error('No valid labels found.');
+        console.warn('No valid labels found.');
       }
     } catch (error) {
-      console.error('Error classifying image:', error);
+      console.error('Error uploading or classifying image:', error);
     } finally {
       setLoading(false);
     }
@@ -53,7 +60,12 @@ const ImageUploader = ({ addItem }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextField type="file" onChange={handleImageChange} />
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={loading}
+        >
           {loading ? <CircularProgress size={24} /> : 'Upload and Classify'}
         </Button>
       </form>
@@ -62,7 +74,9 @@ const ImageUploader = ({ addItem }) => {
           <Typography variant="h6">Classified Labels:</Typography>
           <ul>
             {labels.map((label, index) => (
-              <li key={index}>{label.description} (Confidence: {label.score.toFixed(2)})</li>
+              <li key={index}>
+                {label.description} (Confidence: {label.score.toFixed(2)})
+              </li>
             ))}
           </ul>
         </div>
